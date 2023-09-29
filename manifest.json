@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Hello Extensions of the world",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "action": {},
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads"
+  ],
+  "background": {
+    "service_worker": "build/main.js"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "src/content.js"
+      ],
+      "matches": [
+        "https://raw.senmanga.com/*"
+      ]
+    }
+  ],
+  "web_accessible_resources": [{
+    "matches": ["https://raw.senmanga.com/*"],
+    "resources": ["downloader.html"],
+    "use_dynamic_url": true
+  }]
+}
